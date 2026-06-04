@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# ==============================================
+# Author: James Richardson 
+# Email: james.richardson@invertedlight.com
+# Date Created: 2026-05-21 08:39:38
+# Last Modified: 2026-05-21 13:41:31
+# Script Name: genhdr
+# Description:
+# < Description of what is this script for >
+# Usage:
+# < How to use this script, flag usage or ... >
+# ==============================================
+
+# ============= Start of Code ==================
+
+echo "# Date Created: $(date '+%Y-%m-%d %H:%M:%S')" 
+echo "# Last Modified: $(date '+%Y-%m-%d %H:%M:%S')"
+echo "# Script Name: "
+

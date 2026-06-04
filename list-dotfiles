@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# ==============================================
+# Author: James Richardson 
+# Email: james.richardson@invertedlight.com
+# Script Name:list-dotfiles
+# Date Created: 2026-05-19
+# Last Modified: 2026-05-19
+# Description:
+#  list all files in the ~/dotfiles directory
+#  Skip the element if not a regular file (excludes directories and .hidden files)
+# Usage:
+#  ./list-dotfiles
+# ==============================================
+
+# ============= Start of Code ==================
+
+[[ -d "$HOME/dotfiles" ]] || echo -e "      \e[0;30;101mNo ~/dotfiles present!\e[0m \n\tYou need to clone the git repository:\n\t \"\e[0;31mgit clone https://github.com/Invertedlight/dotfiles-bash.git\e[0m\"\n\t Then execute \"\e[0;31m~/dotfiles/setup\e[0m\" to get this going.\n" 
+
+cd "$HOME/dotfiles" 2>/dev/null 
+
+for file in *; do
+  [[ -f $file ]] || continue
+    echo -e "\e[0;31m$file\e[m"
+done
+

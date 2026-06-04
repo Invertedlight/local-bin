@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# ==============================================
+# Author: James Richardson 
+# Email: james.richardson@invertedlight.com
+# Date Created: 2026-05-21 16:52:22
+# Last Modified: 2026-05-21 16:52:22
+# Script Name: link_dotfiles
+# Description:
+#   Setup dotfiles using an array to execute the link
+#    Only works with first level files in dotfiles for the array
+# Usage:
+#   link_dotfiles
+# ==============================================
+
+# ============= Start of Code ==================
+
+link_files() {
+  local src="$1"
+  local dest="$2"
+  ln -sf "$src" "$dest"
+}
+
+dotfiles=("bashrc" "vimrc")
+
+for file in "${dotfiles[@]}"; do
+  link_files "$HOME/dotfiles/$file" "$HOME/.$file"
+done
+
+[ -d ~/.vim/templates/ ] || mkdir -p ~/.vim/templates/
+[ -d ~/.config ] || mkdir ~/.config
+
+ln -sf ~/dotfiles/vim/templates/sh_template.temp ~/.vim/templates
+ln -sf ~/dotfiles/vim/templates/sh_template.temp_bask ~/.vim/templates
+ln -sf ~/dotfiles/starship.toml ~/.config/starshp.toml
+
+[ -d ~/.local/bin/ ] || mkdir -p ~/.local/bin/
+mv ~/bin/* ~/.local/bin/.
+
+echo "Done!"
+
+

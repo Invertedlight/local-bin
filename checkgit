@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# ==============================================
+# Author: James Richardson 
+# Email: james.richardson@invertedlight.com
+# Date Created: 2026-05-20
+# Last Modified: 2026-05-21 4:53:00
+# Script Name: checkgit
+# Description:
+# find the git directories and check their status
+# Usage:
+#  checkgit
+# ==============================================
+
+# ============= Start of Code ==================
+
+#find ~/ -iname ".git" -print0 2>/dev/null | xargs -I /bin/sh -c cd "$(dirname {})" ; printf "Checking dir: %s" "$(dirname {})" ; git status
+
+find ~/  -iname ".git" -print0 2>/dev/null | xargs -I{} -n 1 --null /bin/sh -c 'cd "$(dirname {})"; echo  "\e[0;32m\n=============================================================================\e[0m\n"; echo -n "\e[0;93m$(dirname {})  - \e[m"; git status;'
+
