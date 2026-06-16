@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# ==============================================
+# Author: James Richardson
+# Email: james.richardson@invertedlight.com
+# Date Created: 2026-06-16 16:35:53
+# Last Modified: 2026-06-16 16:35:53
+# Script Name: setup-local-bin
+# Description:
+#  Move user bin files to ~/.local/bin
+# Usage:
+#  setup-local-bin
+# ==============================================
+
+# ============= Start of Code ==================
+
+[ -f ~/.local/bin ] || mkdir -p ~/.local/bin
+
+cp ~/local-bin/* ~/.local/bin/
+
+echo "Local-bin files copied to ~/.local/bin"
+
