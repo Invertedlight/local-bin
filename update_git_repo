@@ -19,13 +19,14 @@
 # ============= Start of Code ==================
 if [ -d $1/.git ]; then
   cd "$1"
-  files="$(git status -s)"
 
-  echo ">$files<"
+  repo=basename "$(grep -i url .git/config)" .git
+
+  files="$(git status -s)"
 
   if [[ -n "$files" ]]; then
     git add .
-    git commit -m "Updating Obsidian repository: $files"
+    git commit -m "Updating repository $repo: $files"
     git push
   else
     echo "usage: update_git_repo PATH_TO_REPO_DIR"
