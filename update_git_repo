@@ -17,19 +17,15 @@
 # ==============================================
 
 # ============= Start of Code ==================
-echo "Current Dir: $(pwd)"
 if [ -d $1/.git ]; then
-  echo "Moving to $1"
   cd "$1"
-  echo "in $1"
-  echo "New DIR: $(pwd)"
   files="$(git status -s)"
 
   echo ">$files<"
 
   if [[ -n "$files" ]]; then
     git add .
-    git commit -m "Updating Obsidian repository\n$files"
+    git commit -m "Updating Obsidian repository: $files"
     git push
   else
     echo "usage: update_git_repo PATH_TO_REPO_DIR"
