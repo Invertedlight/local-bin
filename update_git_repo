@@ -17,9 +17,11 @@
 # ==============================================
 
 # ============= Start of Code ==================
+echo "before git dir check"
 if [ -d $1/.git ]; then
+  echo "before CD"
   cd "$1"
-
+echo after"CD"
   echo "before repo "
   repo="test"    
 echo "after repo"
