@@ -20,7 +20,7 @@
 if [ -d $1/.git ]; then
   cd "$1"
 
-  repo="test"      #"(${${${$(grep -i url .git/config)##*( )}//(*)*\//}%.git})"
+  repo="test"    
 
   files="$(git status -s)"
 
