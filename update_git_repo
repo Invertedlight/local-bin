@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# ==============================================
+# Author: James Richardson 
+# Email: james.richardson@invertedlight.com
+# Date Created: 2026-06-26 14:50:29
+# Last Modified: 2026-06-26 14:50:29
+# Script Name: update_git_repo
+# Description:
+#  CD to the provided DIR PATH (arg1  $1)  to run
+#  If no arg provided exit and do nothing, display usage
+#  checks git status for missing / changed files
+#  executes get status -s to capture the file list
+#  executes get commit -m ""  inserting the files that changed
+# Usage:
+#  update_git_repo git_DIR_path
+# ==============================================
+
+# ============= Start of Code ==================
+echo "Current Dir: $(pwd)"
+if [ -d $1/.git ]; then
+  echo "Moving to $1"
+  cd "$1"
+  echo "in $1"
+  echo "New DIR: $(pwd)"
+  files="$(git status -s)"
+
+  echo ">$files<"
+
+  if [[ -n "$files" ]]; then
+    git add .
+    git commit -m "Updating Obsidian repository\n$files"
+    git push
+  else
+    echo "usage: update_git_repo PATH_TO_REPO_DIR"
+    echo "No git repo directory path provided exiting"
+    exit 1
+  fi
+fi
