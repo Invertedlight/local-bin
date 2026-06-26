@@ -20,7 +20,7 @@
 if [ -d $1/.git ]; then
   cd "$1"
 
-  repo="echo ${${${"$(grep -i url .git/config)"##*( )}//(*)*\//}%.git}"
+  repo="eval ${${${"$(grep -i url .git/config)"##*( )}//(*)*\//}%.git}"
 
   files="$(git status -s)"
 
