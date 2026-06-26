@@ -7,7 +7,7 @@
 # Last Modified: 2026-06-26 14:50:29
 # Script Name: update_git_repo
 # Description:
-#  CD to the provided DIR PATH (arg1  $1)  to run
+#  CD to the provided git_repo_DIR (arg1  $1)  to run
 #  If no arg provided exit and do nothing, display usage
 #  checks git status for missing / changed files
 #  executes get status -s to capture the file list
@@ -28,9 +28,10 @@ if [ -d $1/.git ]; then
     git add .
     git commit -m "Updating repository $repo: $files"
     git push
+  fi
+
   else
     echo "usage: update_git_repo PATH_TO_REPO_DIR"
     echo "No git repo directory path provided exiting"
     exit 1
   fi
-fi
