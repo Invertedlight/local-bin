@@ -22,11 +22,11 @@ if [ -d $1/.git ]; then
   
   repo=$(grep "url" .git/config) | awk -F/ '{print $NF}' | sed 's/\.[^.]*$//'
   
-  files="tet file"
-  echo "$files are here"
-files=$(eval git status -s)
+files=(eval git status -s)
+
  echo "$files <what files"
-  if [[ -n "$files" ]]; then
+
+ if [[ -n "$files" ]]; then
     git add .
     git commit -m "Updating repository $repo: $files"
     git push
