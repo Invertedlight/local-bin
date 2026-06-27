@@ -24,7 +24,7 @@ if [ -d $1/.git ]; then
   
   files=$(git status --short)
     
- echo "$files ::<what files"
+ echo "$files "
 
  if [[ -n "$files" ]]; then
     git add .
