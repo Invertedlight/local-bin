@@ -1,5 +1,5 @@
 #!/bin/bash
-
+#
 # ==============================================
 # Author: James Richardson 
 # Email: james.richardson@invertedlight.com
@@ -20,8 +20,11 @@
 if [ -d $1/.git ]; then
   cd "$1"
   
-  repo=$(grep -i "url" .git/config | awk -F/ '{print $NF}' | sed 's/\.[^.]*$//')
-  
+  foo=$(grep -i "url" .git/config)
+  echo $foo
+  bar=${foo%.git}
+  echo $bar
+  repo=${bar##*/}
   files=$(git status --short)
 
  if [[ -n "$files" ]]; then
