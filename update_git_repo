@@ -25,6 +25,10 @@ if [ -d $1/.git ]; then
   repo=${bar##*/}
   files=$(git status --short)
 
+  for file in $files; do
+    echo "Updating $file" $file
+  done
+
  if [[ -n "$files" ]]; then
     git add .
 
