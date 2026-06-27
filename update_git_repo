@@ -22,6 +22,7 @@ if [ -d $1/.git ]; then
   
   repo=$(grep "url" .git/config) | awk -F/ '{print $NF}' | sed 's/\.[^.]*$//'
   
+  files="tet file"
  files=$(git status -s)
    echo "$files"
   if [[ -n "$files" ]]; then
