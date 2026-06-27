@@ -22,7 +22,7 @@ if [ -d $1/.git ]; then
   
   repo=$(grep "url" .git/config) | awk -F/ '{print $NF}' | sed 's/\.[^.]*$//'
   
-files=(eval git status -s)
+  files=$(git status -s)
 
  echo "$files <what files"
 
