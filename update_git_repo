@@ -24,7 +24,7 @@ if [ -d $1/.git ]; then
   
   files="tet file"
   echo "$files are here"
-files='$(git status -s)'
+files=$(eval git status -s)
  echo "$files <what files"
   if [[ -n "$files" ]]; then
     git add .
