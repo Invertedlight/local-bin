@@ -21,10 +21,8 @@ if [ -d $1/.git ]; then
   cd "$1"
   
   repo=$(grep -i "url" .git/config | awk -F/ '{print $NF}' | sed 's/\.[^.]*$//')
- echo "repo is: $repo" 
+  
   files=$(git status --short)
-    
- echo "FILES ARE: $files "
 
  if [[ -n "$files" ]]; then
     git add .
