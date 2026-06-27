@@ -25,14 +25,16 @@ if [ -d $1/.git ]; then
   repo=${bar##*/}
   files=$(git status --short)
 
-  for file in $files; do
-    echo "Updating $file" $file
+  echo $files | read -d ''  filearray
+
+  for file in $filearray[@]; do
+    echo "Updating $file" 
   done
 
  if [[ -n "$files" ]]; then
     git add .
 
-    for file in $files; do
+    for file in $filearray[@]; do
       git commit -m "Updating $file"
     done
     
