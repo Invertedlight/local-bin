@@ -27,9 +27,14 @@ if [ -d $1/.git ]; then
   repo=${bar##*/}
   files=$(git status --short)
 
+  comment="-m $repo Adding files:"
+  for file in files; do
+    comment+="-m $file"
+  done
+
  if [[ -n "$files" ]]; then
     git add .
-    git commit -m "Updating repository $repo: $files"
+    git commit "$comment"
     git push
   fi
 
