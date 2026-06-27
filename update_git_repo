@@ -28,7 +28,7 @@ if [ -d $1/.git ]; then
  if [[ -n "$files" ]]; then
     git add .
 
-    for file in files; do
+    for file in $files; do
       git commit -m "Updating $file"
     done
     
