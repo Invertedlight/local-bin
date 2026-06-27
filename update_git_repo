@@ -20,7 +20,7 @@
 if [ -d $1/.git ]; then
   cd "$1"
   
-  repo=$(grep -i "url" .git/config) | awk -F/ '{print $NF}' | sed 's/\.[^.]*$//'
+  repo=$(grep -i "url" .git/config | awk -F/ '{print $NF}' | sed 's/\.[^.]*$//')
  echo "repo is: $repo" 
   files=$(git status --short)
     
