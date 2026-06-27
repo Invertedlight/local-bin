@@ -22,8 +22,8 @@ if [ -d $1/.git ]; then
   
   repo=$(grep "url" .git/config) | awk -F/ '{print $NF}' | sed 's/\.[^.]*$//'
   
-  files="$(git status -s)"
-echo "$files"
+  files=$(git status -s)
+   echo "$files"
   if [[ -n "$files" ]]; then
     git add .
     git commit -m "Updating repository $repo: $files"
