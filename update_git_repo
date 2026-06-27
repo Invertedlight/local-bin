@@ -21,20 +21,17 @@ if [ -d $1/.git ]; then
   cd "$1"
   
   foo=$(grep -i "url" .git/config)
-  echo $foo
   bar=${foo%.git}
-  echo $bar
   repo=${bar##*/}
   files=$(git status --short)
 
-  comment="-m $repo Adding files:"
-  for file in files; do
-    comment+="-m $file"
-  done
-
  if [[ -n "$files" ]]; then
     git add .
-    git commit "$comment"
+
+    for file in files; do
+      git commit -m "Updating $file"
+    done
+    
     git push
   fi
 
