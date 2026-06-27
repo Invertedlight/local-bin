@@ -17,16 +17,13 @@
 # ==============================================
 
 # ============= Start of Code ==================
-echo "before git dir check"
 if [ -d $1/.git ]; then
-  echo "before CD"
   cd "$1"
-echo after"CD"
-  echo "before repo "
-  repo="test"    
-echo "after repo"
+  
+  repo=grep url .git/config | awk -F/ '{print $NF}' | sed 's/\.[^.]*$//'
+  
   files="$(git status -s)"
-echo "After git status"
+
   if [[ -n "$files" ]]; then
     git add .
     git commit -m "Updating repository $repo: $files"
